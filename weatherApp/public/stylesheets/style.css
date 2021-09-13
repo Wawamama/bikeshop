@@ -1,0 +1,93 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+input[type='text'] {
+  outline: none;
+}
+
+input[type='text']:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.empty {
+  font-size: 16px;
+  color:#ffc107;
+}
+
+.logout {
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.home {
+  background-image: url('../images/weather.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 1px black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.navItem{
+  margin-bottom: 10px;
+}
+
+.get_started{
+  margin-bottom: 70px;
+}
+
+.header {
+  margin-bottom: 50px;
+  color: #FFFFFF;
+}
+
+.add-btn {
+  margin-left: -10px;
+  border-radius: 0 .25rem .25rem 0;
+}
+
+.fa-times-circle {
+  color: #ffc107;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-left: solid 1px #ced4da;
+  border-right: solid 1px #ced4da;
+  border-top: solid 1px #ced4da;
+}
+
+ul > li:last-child {
+  border-bottom: solid 1px #ced4da;
+  border-radius: 0 0 0.25rem 0.25rem;
+}
+
+ul > li:first-child {
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.map {
+  align-self: flex-start;
+}

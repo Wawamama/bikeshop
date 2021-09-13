@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>WeatherApp</title>
+</head>
+<body>
+
+
+    <!-- HEADER -->
+    <nav class=" header navbar navbar-light bg-dark">
+        Weather App
+       <a class="logout" href="./login.html">Deconnexion</a>
+   </nav> 
+
+   <!-- GRID -->
+   <div class="container">
+
+    <div class="row">   <!-- Enter city row -->
+        <div class="col-12 col-md-6 offset-md-6 mb-3" >
+            <form class="d-flex" action='/add-city' method="POST">
+                <input class="form-control" type="text" name='cityname' placeholder="Enter City Name">
+                <button class="btn btn-warning add-btn">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row"> <!-- Map row -->
+        <img class="col-12 col-md-6 mt-md-n5 image-fluid map"  src="/images/map.png" alt="">
+        <div class="col-12 col-md-6 mt-2">
+            <p class="text-center">Update Cities <a href="/weather" class="text-dark"><i class="fas fa-sync-alt"></i></a></p>
+
+            <% if (cityList.length == 0) { %>
+                    <p class="text-center text-warning">No city found. Please add a city.</p>
+            <% } %> 
+
+            <ul>
+
+                <% cityList.forEach((city, idx) => { %>
+                    <li>
+                        <div class='cityname'><%= city.name %></div>
+                         <div class="conditions d-inline">
+                             <span><%= city.description %></span>
+                             <img src="<%= city.url %>" alt="" style='margin: 0 0.25rem;'>
+                             <span class="badge badge-pill badge-warning"><%= city.mintemp %>°</span>
+                             <span class="badge badge-pill badge-secondary"><%= city.maxtemp %>°</span>
+                         </div>
+                         <a href="/delete-city?id=<%= idx%>"><i class="far fa-times-circle"></i></a>
+                    </li> 
+
+                <% }) %>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="row"> <!-- Cities row -->
+        
+    </div>
+
+   </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

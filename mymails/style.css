@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:#F5F6FA;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+button {
+    border:none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    height: auto;
+}
+
+button:focus {
+    outline: none;
+}
+
+.addBtn {
+    color: #00a2ff;
+    border: solid 1px #00a2ff;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin-left: auto;
+    transition: all 0.2s ease-in;
+}
+
+.addBtn:hover {
+    background-color: #00a2ff;
+    color:#fff;
+}
+
+.bold {
+    font-weight: 700;
+
+}
+
+button.trash-btn {
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    margin-left: auto;
+}
+
+.container {
+    width: 50vw;
+    max-width: 900px;
+    margin: 5vh auto;
+}
+
+@media (max-width:640px) {
+    .container {
+        width: 99vw;
+    }
+}
+
+.row {
+    background-color: #fff;
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    padding: 2rem;
+    border: solid 1px #DADADA;
+    border-bottom: 0;
+    overflow: hidden;
+    transition: transform 500ms ease;
+}
+
+.row:last-child {
+    border-bottom:solid 1px #DADADA;
+}
+
+.row.deleted {
+    transform: translateX(200vw);
+    height: 0px;
+}
+
+.msg-count, .add-msg {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+h6 {
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    align-self: center;
+}
+
+.infos {
+    justify-self: left;
+}
+
+.trash-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.add-msg_txt {
+    width: 100%;
+    border: solid 1px #cecece;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+.add-msg_txt:focus {
+    outline:none;
+    border: solid 1px #000;
+}
