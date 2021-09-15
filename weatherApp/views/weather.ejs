@@ -36,14 +36,14 @@
         <div class="col-12 col-md-6 mt-2">
             <p class="text-center">Update Cities <a href="/weather" class="text-dark"><i class="fas fa-sync-alt"></i></a></p>
 
-            <% if (cityList.length == 0) { %>
+            <% if (cities.length == 0) { %>
                     <p class="text-center text-warning">No city found. Please add a city.</p>
             <% } %> 
  
                 <p style='color:#ffc107;'><%= error %> </p>
             <ul>
 
-                <% cityList.forEach((city, idx) => { %>
+                <% cities.forEach((city, idx) => { %>
                     <li>
                         <div class='cityname'><%= city.name %></div>
                          <div class="conditions d-inline">
