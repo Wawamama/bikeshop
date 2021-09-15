@@ -24,8 +24,6 @@ router.get('/weather', async (req, res, next) => {
 // POST NEW CITY ROUTE
 router.post('/add-city', async (req, res, next) => {
 
-  // const alreadyIn = cityList.some(city => city.name == req.body.cityname)
-
   const requete = request('GET', `https://api.openweathermap.org/data/2.5/weather?q=${req.body.cityname}&units=metric&lang=fr&appid=${API_KEY}`)
   const dataAPI = JSON.parse(requete.body)
 
@@ -34,22 +32,19 @@ router.post('/add-city', async (req, res, next) => {
   }
 
   if(req.body.cityname && dataAPI.cod == 200) {
-       error = ''  
-  //   cityList.push({
-  //     name: dataAPI.name,
-  //     url: `http://openweathermap.org/img/wn/${dataAPI.weather[0].icon}.png`,
-  //     mintemp: dataAPI.main['temp_min'],
-  //     maxtemp: dataAPI.main['temp_max'],
-  //     description: dataAPI.weather[0].description
-  //   })
-
-      const newCity = City.create({
-        name: dataAPI.name,
-        url: `http://openweathermap.org/img/wn/${dataAPI.weather[0].icon}.png`,
-        mintemp: dataAPI.main['temp_min'],
-        maxtemp: dataAPI.main['temp_max'],
-        description: dataAPI.weather[0].description
-      })
+      try {
+        error = ''  
+        const newCity = await City.create({
+          name: dataAPI.name,
+          url: `http://openweathermap.org/img/wn/${dataAPI.weather[0].icon}.png`,
+          mintemp: dataAPI.main['temp_min'],
+          maxtemp: dataAPI.main['temp_max'],
+          description: dataAPI.weather[0].description
+        })
+      } catch (err) {
+        error = 'City already exists'
+        console.log(err)
+      } 
   }
 
   const cities = await City.find()
@@ -59,10 +54,28 @@ router.post('/add-city', async (req, res, next) => {
 
 
 // DELETE ROUTE
-router.get('/delete-city', (req, res, next) => {
-  cityList.splice(req.query.id, 1)
+router.get('/delete-city', async (req, res, next) => {
 
-  res.render('weather', { cityList, error })
+  const doc = await City.findByIdAndDelete(req.query.id)
+  const cities = await City.find()
+
+  res.render('weather', { cities, error })
+})
+
+// UPDATE CITIES ROUTE
+router.get('/update-cities', async (req, res, next) => {
+  const cities = await City.find()
+
+  cities.forEach(async (city) => {
+    const requete = request('GET', `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&lang=fr&appid=${API_KEY}`)
+    const dataAPI = JSON.parse(requete.body)
+
+    const doc = await City.findByIdAndUpdate(city._id, dataAPI, {
+      new: true  })
+    
+  })
+
+  res.render('weather', { cities, error })
 })
 
 module.exports = router;

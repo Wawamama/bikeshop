@@ -34,7 +34,7 @@
         <img class="col-12 col-md-6 mt-md-n5 image-fluid map"  src="/images/map.png" alt="">
 
         <div class="col-12 col-md-6 mt-2">
-            <p class="text-center">Update Cities <a href="/weather" class="text-dark"><i class="fas fa-sync-alt"></i></a></p>
+            <p class="text-center">Update Cities <a href="/update-cities" class="text-dark"><i class="fas fa-sync-alt"></i></a></p>
 
             <% if (cities.length == 0) { %>
                     <p class="text-center text-warning">No city found. Please add a city.</p>
@@ -52,7 +52,7 @@
                              <span class="badge badge-pill badge-warning"><%= city.mintemp %>°</span>
                              <span class="badge badge-pill badge-secondary"><%= city.maxtemp %>°</span>
                          </div>
-                         <a href="/delete-city?id=<%= idx%>"><i class="far fa-times-circle"></i></a>
+                         <a href="/delete-city?id=<%= city._id%>"><i class="far fa-times-circle"></i></a>
                     </li> 
 
                 <% }) %>
