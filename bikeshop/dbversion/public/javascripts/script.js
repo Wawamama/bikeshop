@@ -1,0 +1,1 @@
+console.log('im the script yo')
