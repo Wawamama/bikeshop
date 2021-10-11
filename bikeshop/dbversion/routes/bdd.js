@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const DB = 'mongodb+srv://wawa:kornmuse@cluster0.jj3n6.mongodb.net/bikeshop?retryWrites=true&w=majority'
+const DB = 'mongodb+srv://<DB_INFO>'
 
 const options = {
   connectTimeoutMS: 5000,
